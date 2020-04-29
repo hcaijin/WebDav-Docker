@@ -1,0 +1,18 @@
+version: '3.2'
+
+services:
+
+  webdav:
+    image: jgeusebroek/webdav
+    container_name: webdav
+    environment:
+      # USER_UID: 0
+      USER_GID: 50
+      # WHITELIST: '192.168.11.*'
+      READWRITE: 'true'
+    volumes:
+      - ${HOME}/WebDav:/webdav
+      - ./config:/config
+    ports:
+      - "8888:80"
+    restart: always
